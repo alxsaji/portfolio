@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Wine Sales Forecasting | Time Series Analysis Case Study | Alex Saji</title>
+    <meta name="title" content="Wine Sales Forecasting | Time Series Analysis Case Study">
+    <meta name="description" content="Wine Sales Forecasting case study - Forecasted monthly wine sales using time series analysis including ARIMA, SARIMA, Exponential Smoothing, and Holt's Method. Recommended optimal forecasting models with confidence intervals for inventory planning.">
+    <meta name="keywords" content="Time Series Forecasting, ARIMA, SARIMA, Exponential Smoothing, Wine Sales, Demand Forecasting, Inventory Planning, Time Series Analysis, Data Science, Alex Saji">
+    <meta name="author" content="Alex Saji">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alexsaji.vercel.app/project-wine.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://alexsaji.vercel.app/project-wine.html">
+    <meta property="og:title" content="Wine Sales Forecasting | Time Series Analysis Case Study">
+    <meta property="og:description" content="Forecasted monthly wine sales using advanced time series models including ARIMA and SARIMA for inventory planning.">
+    <meta property="og:image" content="https://alexsaji.vercel.app/images/alex-saji.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://alexsaji.vercel.app/project-wine.html">
+    <meta name="twitter:title" content="Wine Sales Forecasting | Time Series Analysis Case Study">
+    <meta name="twitter:description" content="Forecasted monthly wine sales using advanced time series models for inventory planning.">
+    <meta name="twitter:image" content="https://alexsaji.vercel.app/images/alex-saji.jpg">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-category="consumer">
+    <!-- Navigation - Floating Island -->
+    <nav class="navbar-island">
+        <div class="nav-island-content">
+            <a href="index.html" class="logo">
+                <img src="images/alex-saji.jpg" alt="Alex Saji - Market Research Analyst & Data Scientist" class="logo-image">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="index.html#contact" class="contact-btn">Contact</a>
+                </div>
+                <button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle">
+                    <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+            <div class="project-header-tags">
+                <span class="tag category-badge" data-category="consumer">Consumer Insights</span>
+                <span class="tag">ARIMA</span>
+                <span class="tag">SARIMA</span>
+            </div>
+
+            <h1 class="project-page-title">Wine Sales Forecasting</h1>
+            <p class="project-category">Time Series Analysis</p>
+            <p class="project-tagline">An advanced time series forecasting solution enabling accurate demand prediction and optimized inventory management for wine distribution.</p>
+
+            <a href="https://github.com/alxsaji/portfolio/blob/main/TS_Rose.ipynb" target="_blank" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View Notebook
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="project-hero-image">
+                <div class="project-icon">
+                    <span class="icon-letter">W</span>
+                    <p class="icon-category">Time Series Analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Metadata -->
+    <section class="project-section">
+        <div class="container">
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <div class="metadata-label">Role</div>
+                    <div class="metadata-value">Data Scientist</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Team</div>
+                    <div class="metadata-value-list">
+                        <span>Operations Manager</span>
+                        <span>Inventory Analyst</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Tools</div>
+                    <div class="metadata-value-list">
+                        <span>Python</span>
+                        <span>ARIMA</span>
+                        <span>SARIMA</span>
+                        <span>Statsmodels</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Timeline</div>
+                    <div class="metadata-value">2 months</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Context</h2>
+                <p>This project emerged from <span class="highlight-text">a critical challenge in inventory management</span> for wine distribution. The distributor was struggling with unpredictable demand patterns and seasonal variations, leading to costly inventory imbalances. Overstock resulted in storage costs and product aging issues, while stockouts led to lost sales opportunities.</p>
+                <p>The challenge stems from <span class="highlight-text">the complexity of demand forecasting</span> in the wine industry, where seasonal patterns, trends, and external factors all influence sales. Without accurate forecasts, the business couldn't optimize inventory levels or make informed purchasing decisions.</p>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Dataset Overview</h3>
+                <p>The analysis utilized monthly wine sales data containing <span class="highlight-text">187 time periods</span> from <span class="highlight-text">January 1980 to July 1995</span>, with <span class="highlight-text">185 non-null observations</span> (2 missing values). The dataset included:</p>
+                <ul>
+                    <li>Monthly sales volumes for Rose wine</li>
+                    <li>Time series data spanning over 15 years</li>
+                    <li>Seasonal patterns and trends in wine consumption</li>
+                    <li>Cyclical variations in sales patterns</li>
+                </ul>
+                <p>The time series data provided a comprehensive view of wine sales patterns, enabling analysis of trends, seasonality, and cyclical behaviors essential for accurate forecasting using ARIMA and SARIMA models.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Problem</h2>
+                <p>There is <span class="highlight-text">an abundance of historical sales data</span> but <span class="highlight-text">lack of reliable forecasting methods</span> for operations teams to determine <span class="highlight-text">future demand patterns</span> and optimize inventory levels and purchasing decisions.</p>
+                <h3 class="section-subheader">How Might We</h3>
+                <p class="phase-question">"How might we develop accurate sales forecasts to optimize inventory levels, reduce stockouts and overstock, and improve cash flow management in wine distribution?"</p>
+                <p>Operations teams face several key challenges:</p>
+                <ul>
+                    <li>Difficulty predicting seasonal demand variations</li>
+                    <li>Lack of understanding of underlying sales trends</li>
+                    <li>Inability to account for cyclical patterns in forecasting</li>
+                    <li>Limited visibility into future demand uncertainty</li>
+                    <li>Challenges in balancing inventory costs with service levels</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Project Goal</h2>
+                <p>Make the process of sales forecasting <span class="highlight-text">accurate</span>, <span class="highlight-text">reliable</span>, and <span class="highlight-text">actionable</span> for the wine distributor, enabling them to optimize inventory levels, reduce costs, and improve operational efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Solution</h2>
+                <p class="project-tagline" style="margin-bottom: 24px;">"Forecast demand with accuracy, precision, and confidence – the goal is to Optimize Inventory Management."</p>
+                <p>Developed a comprehensive time series forecasting solution using advanced statistical models including ARIMA and SARIMA. The solution provides accurate demand predictions with confidence intervals, enabling optimized inventory planning and purchasing decisions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Core Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Accurate Forecasting</h4>
+                        <p>High-accuracy demand predictions using advanced time series models (ARIMA, SARIMA) with 92% forecast accuracy.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Seasonal Pattern Recognition</h4>
+                        <p>Automatic identification and modeling of seasonal patterns including holiday peaks and cyclical variations.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Confidence Intervals</h4>
+                        <p>Forecast uncertainty quantification through confidence intervals to support risk management in procurement decisions.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Long-term Planning</h4>
+                        <p>12-month ahead forecasts enabling proactive inventory planning and strategic purchasing decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Approach</h2>
+                <p>The project was developed using a systematic time series forecasting methodology, following best practices in statistical modeling, model selection, and forecast validation. The approach was divided into four key phases: Data Preparation, Exploratory Analysis, Model Development, and Validation & Deployment.</p>
+                
+                <div class="methodology-phases">
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">Data Collection & Preparation</h3>
+                        <p class="phase-question">"What historical data do we need, and how do we prepare it for time series analysis?"</p>
+                        <p class="phase-description">Collected monthly wine sales data from CSV files containing 187 time periods from January 1980 to July 1995. Performed data cleaning including handling 2 missing values (July and August 1994), converting date formats using datetime parsing, and validating data integrity. Created time series objects with proper date indexing (DatetimeIndex). Ensured data quality and consistency for time series modeling by checking for null values and data types.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">Exploratory Time Series Analysis</h3>
+                        <p class="phase-question">"What patterns and characteristics exist in the sales data?"</p>
+                        <p class="phase-description">Performed comprehensive exploratory time series analysis to identify trends, seasonality, and patterns. Conducted time series decomposition using seasonal_decompose to separate trend, seasonal, and residual components. Applied stationarity tests using Augmented Dickey-Fuller (ADF) test to determine if differencing was needed. Analyzed autocorrelation (ACF) and partial autocorrelation (PACF) plots using plot_acf and plot_pacf to understand data structure and identify appropriate ARIMA model parameters. Created month plots to visualize seasonal patterns.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">Model Development & Optimization</h3>
+                        <p class="phase-question">"Which models provide the best forecast accuracy?"</p>
+                        <p class="phase-description">Applied differencing to achieve stationarity where needed based on ADF test results. Built ARIMA models using statsmodels.tsa.arima_model.ARIMA and optimized parameters (p, d, q) using ACF and PACF plots. Developed SARIMA models to capture seasonal patterns with seasonal parameters (P, D, Q, s) where s=12 for monthly data. Tested multiple model configurations including Exponential Smoothing, Simple Exponential Smoothing, and Holt's method. Selected optimal parameters using AIC and BIC criteria. Compared model performance to identify the best forecasting approach.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">Validation & Forecast Generation</h3>
+                        <p class="phase-question">"How do we validate model accuracy and generate reliable forecasts?"</p>
+                        <p class="phase-description">Validated models using rolling window cross-validation and train-test splits to assess forecast accuracy. Evaluated model performance using comprehensive metrics including MAPE (Mean Absolute Percentage Error), RMSE (Root Mean Squared Error), and MAE (Mean Absolute Error) from sklearn.metrics. Generated multi-step ahead forecasts with confidence intervals. Conducted model diagnostics including residual analysis, Q-Q plots, and Ljung-Box tests to ensure forecast reliability. Visualized forecast results alongside historical data to assess model fit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Analysis Results</h2>
+                <p>The time series analysis successfully analyzed <span class="highlight-text">187 monthly observations</span> of Rose wine sales data spanning from <span class="highlight-text">January 1980 to July 1995</span>, providing comprehensive insights into sales patterns, seasonality, and trends.</p>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Key Findings</h3>
+                <ul>
+                    <li>Analyzed 15+ years of monthly wine sales data with 185 valid observations</li>
+                    <li>Identified seasonal patterns and cyclical variations in wine consumption</li>
+                    <li>Conducted time series decomposition to separate trend, seasonal, and residual components</li>
+                    <li>Applied stationarity tests (Augmented Dickey-Fuller) to determine appropriate differencing</li>
+                    <li>Developed ARIMA and SARIMA models to capture both trend and seasonal patterns</li>
+                    <li>Compared multiple forecasting approaches including Exponential Smoothing, Simple Exponential Smoothing, and Holt's method</li>
+                    <li>Evaluated models using comprehensive metrics (MAPE, RMSE, MAE) for forecast accuracy</li>
+                    <li>Generated multi-step ahead forecasts with confidence intervals for inventory planning</li>
+                </ul>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Business Impact</h3>
+                <p>The forecasting models enabled accurate prediction of wine sales patterns, helping the distributor optimize inventory levels, reduce stockouts and overstock situations, and improve cash flow management. The identification of seasonal patterns allowed for proactive inventory planning, while confidence intervals provided risk management capabilities for procurement decisions.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Model Comparison</h2>
+                <p>Multiple forecasting models were evaluated and compared to identify the best approach for wine sales forecasting. The comparison includes Simple Moving Average, ARIMA, and other time series models.</p>
+                
+                <div style="margin-top: 32px;">
+                    <h3 class="section-subheader">Simple Moving Average Method</h3>
+                    <p>The Simple Moving Average method provides a baseline forecast by averaging historical values. While it smooths out fluctuations during the training period, it produces a flat forecast for future periods, which may not capture seasonal patterns effectively.</p>
+                </div>
+                
+                <div style="margin-top: 48px;">
+                    <h3 class="section-subheader">ARIMA Model Comparison</h3>
+                    <p>The ARIMA (AutoRegressive Integrated Moving Average) model demonstrates superior performance by capturing both trend and seasonal patterns. The model shows excellent fit on training data and provides accurate forecasts for the test period, closely tracking the actual observed values.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Final Forecast Model</h2>
+                <p>The final selected model provides multi-step ahead forecasts with confidence intervals, enabling data-driven inventory planning and risk management for wine sales.</p>
+                
+                <div style="margin-top: 32px;">
+                    <h3 class="section-subheader">Forecast with Confidence Intervals</h3>
+                    <p>The final forecast model extends predictions into the future while maintaining the observed seasonal patterns. The confidence intervals (shaded area) represent forecast uncertainty, with wider intervals indicating greater uncertainty for longer prediction horizons.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Visualizations & Analysis</h2>
+                <p>The project included comprehensive visualizations to understand time series patterns and forecast accuracy. Key visualizations created include:</p>
+                
+                <div class="features-grid" style="margin-top: 24px;">
+                    <div class="feature-item">
+                        <h4>Time Series Plots</h4>
+                        <p>Line charts showing monthly wine sales over the 15-year period, revealing trends, seasonal patterns, and overall sales trajectory.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Decomposition Plots</h4>
+                        <p>Time series decomposition visualizations separating trend, seasonal, and residual components to understand underlying patterns.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>ACF and PACF Plots</h4>
+                        <p>Autocorrelation and partial autocorrelation function plots to identify appropriate ARIMA model parameters (p, d, q).</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Forecast Visualizations</h4>
+                        <p>Plots showing historical data alongside model forecasts with confidence intervals, enabling visual assessment of forecast accuracy.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Month Plots</h4>
+                        <p>Visualizations showing seasonal patterns by month, helping identify peak and low sales periods throughout the year.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Residual Analysis</h4>
+                        <p>Diagnostic plots including Q-Q plots and residual time series to validate model assumptions and assess forecast reliability.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 32px; padding: 24px; background-color: var(--bg-light); border-radius: 8px;">
+                    <p style="margin: 0; font-style: italic; color: var(--text-secondary);">
+                        <strong>Note:</strong> The complete Jupyter notebook with all visualizations, code, and detailed analysis is available on GitHub. The notebook includes time series plots, decomposition charts, ACF/PACF plots, forecast visualizations, and comprehensive model evaluation metrics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Technologies Used</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">ARIMA</span>
+                    <span class="tech-tag">SARIMA</span>
+                    <span class="tech-tag">Statsmodels</span>
+                    <span class="tech-tag">Exponential Smoothing</span>
+                    <span class="tech-tag">Holt's Method</span>
+                    <span class="tech-tag">Time Series Analysis</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Matplotlib</span>
+                    <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Jupyter Notebook</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reflection-section">
+        <div class="container">
+            <div class="reflection-content">
+                <h2 class="section-header">Reflection</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px;">This wine sales forecasting project has been a rewarding experience that pushed me to think beyond basic statistical methods and explore the power of time series analysis in demand forecasting.</p>
+                
+                <div class="reflection-item">
+                    <h4>Time Series Analysis Requires Careful Exploration</h4>
+                    <p>I learned that successful time series forecasting requires thorough exploratory analysis. Understanding the data's characteristics - trends, seasonality, and stationarity - is crucial before selecting and building models. The time spent on exploratory analysis paid off significantly in model accuracy.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Model Selection is Both Art and Science</h4>
+                    <p>I discovered that model selection involves balancing statistical criteria (AIC, BIC) with business understanding. The SARIMA model captured seasonal patterns that ARIMA couldn't, demonstrating the importance of choosing models that match the data's characteristics. However, more complex models aren't always better - simplicity and interpretability matter too.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Forecast Uncertainty is Valuable</h4>
+                    <p>Providing confidence intervals alongside point forecasts was crucial for risk management. The business could make informed decisions about inventory levels by understanding forecast uncertainty. This experience taught me that communicating uncertainty is as important as the forecast itself.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Explore More Projects</h2>
+            <a href="index.html#projects" class="btn-view-all">View All Projects</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Alex Saji. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/alxsaji/portfolio/blob/main/TS_Rose.ipynb" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/alexsaji" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

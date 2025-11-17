@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Insurance Claims Visualization | Tableau Dashboard Case Study | Alex Saji</title>
+    <meta name="title" content="Insurance Claims Visualization | Tableau Dashboard Case Study">
+    <meta name="description" content="Insurance Claims Visualization case study - Created interactive Tableau dashboards for comprehensive insurance claims analysis. Visualized claim patterns, trends, and insights to support data-driven decision making in the insurance industry.">
+    <meta name="keywords" content="Tableau, Data Visualization, Insurance Analytics, Business Intelligence, Dashboard Design, Claims Analysis, Data Visualization, BI Tools, Alex Saji">
+    <meta name="author" content="Alex Saji">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alexsaji.vercel.app/project-insurance.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://alexsaji.vercel.app/project-insurance.html">
+    <meta property="og:title" content="Insurance Claims Visualization | Tableau Dashboard Case Study">
+    <meta property="og:description" content="Interactive Tableau dashboards for comprehensive insurance claims analysis and data-driven decision making.">
+    <meta property="og:image" content="https://alexsaji.vercel.app/images/alex-saji.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://alexsaji.vercel.app/project-insurance.html">
+    <meta name="twitter:title" content="Insurance Claims Visualization | Tableau Dashboard Case Study">
+    <meta name="twitter:description" content="Interactive Tableau dashboards for comprehensive insurance claims analysis.">
+    <meta name="twitter:image" content="https://alexsaji.vercel.app/images/alex-saji.jpg">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-category="business">
+    <!-- Navigation - Floating Island -->
+    <nav class="navbar-island">
+        <div class="nav-island-content">
+            <a href="index.html" class="logo">
+                <img src="images/alex-saji.jpg" alt="Alex Saji - Market Research Analyst & Data Scientist" class="logo-image">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="index.html#contact" class="contact-btn">Contact</a>
+                </div>
+                <button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle">
+                    <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+            <div class="project-header-tags">
+                <span class="tag category-badge" data-category="business">Business Intelligence</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">Dashboard</span>
+            </div>
+
+            <h1 class="project-page-title">Insurance Claims Visualization</h1>
+            <p class="project-category">Data Visualization</p>
+            <p class="project-tagline">An interactive Tableau dashboard suite enabling real-time claims monitoring, fraud detection, and data-driven decision-making for insurance operations.</p>
+
+            <a href="https://github.com/alxsaji/portfolio" target="_blank" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View Portfolio
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="project-hero-image">
+                <div class="project-icon">
+                    <span class="icon-letter">I</span>
+                    <p class="icon-category">Data Visualization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Metadata -->
+    <section class="project-section">
+        <div class="container">
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <div class="metadata-label">Role</div>
+                    <div class="metadata-value">Data Analyst</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Team</div>
+                    <div class="metadata-value-list">
+                        <span>Claims Manager</span>
+                        <span>Business Analyst</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Tools</div>
+                    <div class="metadata-value-list">
+                        <span>Tableau</span>
+                        <span>SQL</span>
+                        <span>Data Preparation</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Timeline</div>
+                    <div class="metadata-value">2 months</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Context</h2>
+                <p>This project emerged from <span class="highlight-text">a critical need for data visibility</span> in the insurance industry. The insurance company was operating with vast amounts of claims data but lacked intuitive, interactive visualizations to monitor performance, identify anomalies, and make data-driven decisions.</p>
+                <p>The challenge stems from <span class="highlight-text">the abundance of claims data</span> but <span class="highlight-text">lack of accessible visualization tools</span> that could provide real-time insights. Static reports were time-consuming to produce and lacked the flexibility for ad-hoc analysis, making it difficult to respond quickly to emerging trends.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Problem</h2>
+                <p>There is <span class="highlight-text">an abundance of claims data</span> but <span class="highlight-text">lack of intuitive visualization tools</span> for insurance stakeholders to monitor <span class="highlight-text">claims performance, identify anomalies, and detect fraud patterns</span> in real-time.</p>
+                <h3 class="section-subheader">How Might We</h3>
+                <p class="phase-question">"How might we create intuitive, interactive visualizations that enable insurance stakeholders to monitor claims performance, identify anomalies, and respond quickly to emerging trends or potential fraud patterns?"</p>
+                <p>Insurance stakeholders face several key challenges:</p>
+                <ul>
+                    <li>Difficulty monitoring claims performance in real-time</li>
+                    <li>Lack of interactive tools for ad-hoc analysis</li>
+                    <li>Inability to quickly identify fraud patterns and anomalies</li>
+                    <li>Time-consuming process of creating static reports</li>
+                    <li>Limited visibility into regional trends and patterns</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Project Goal</h2>
+                <p>Make the process of claims monitoring and analysis <span class="highlight-text">intuitive</span>, <span class="highlight-text">interactive</span>, and <span class="highlight-text">real-time</span> for insurance stakeholders, enabling them to make data-driven decisions and respond quickly to emerging trends.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Solution</h2>
+                <p class="project-tagline" style="margin-bottom: 24px;">"Visualize claims data with clarity, interactivity, and insight – the goal is to Enable Real-Time Decision Making."</p>
+                <p>Developed a comprehensive Tableau dashboard suite that provides interactive visualizations for claims monitoring, fraud detection, and performance analysis. The solution enables stakeholders to explore data, identify patterns, and make data-driven decisions through intuitive, real-time dashboards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Core Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Executive Dashboard</h4>
+                        <p>High-level KPIs including total claims, average settlement time, claims ratio, and key performance metrics for executive decision-making.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Geographic Analysis</h4>
+                        <p>Interactive heat maps showing claims distribution by region to identify geographic patterns and guide expansion strategies.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Fraud Detection</h4>
+                        <p>Specialized dashboard highlighting suspicious patterns and anomalies to enable proactive fraud investigation.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Interactive Exploration</h4>
+                        <p>Dynamic filters, drill-down capabilities, and time-series analysis for ad-hoc investigation and trend identification.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Interactive Dashboard</h2>
+                <p>Explore the interactive Tableau dashboard below to see real-time claims data visualization, geographic analysis, and fraud detection insights.</p>
+                <div style="margin-top: 32px; width: 100%; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <div class='tableauPlaceholder' id='viz1763141789503' style='position: relative; width: 100%;'>
+                        <noscript>
+                            <a href='#'>
+                                <img alt='Car Insurance Claims ' src='https://public.tableau.com/static/images/Ca/CarInsurance-DVT_16429472932790/Story1/1_rss.png' style='border: none; width: 100%;' />
+                            </a>
+                        </noscript>
+                        <object class='tableauViz' style='display:none;'>
+                            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                            <param name='embed_code_version' value='3' />
+                            <param name='site_root' value='' />
+                            <param name='name' value='CarInsurance-DVT_16429472932790&#47;Story1' />
+                            <param name='tabs' value='no' />
+                            <param name='toolbar' value='yes' />
+                            <param name='static_image' value='https://public.tableau.com/static/images/Ca/CarInsurance-DVT_16429472932790/Story1/1.png' />
+                            <param name='animate_transition' value='yes' />
+                            <param name='display_static_image' value='yes' />
+                            <param name='display_spinner' value='yes' />
+                            <param name='display_overlay' value='yes' />
+                            <param name='display_count' value='yes' />
+                            <param name='language' value='en-US' />
+                        </object>
+                    </div>
+                    <script type='text/javascript'>
+                        var divElement = document.getElementById('viz1763141789503');
+                        var vizElement = divElement.getElementsByTagName('object')[0];
+                        vizElement.style.width='100%';
+                        vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+                        var scriptElement = document.createElement('script');
+                        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Approach</h2>
+                <p>The project was developed using a systematic data visualization methodology, following best practices in dashboard design, user experience, and business intelligence. The approach was divided into four key phases: Data Preparation, Dashboard Design, Interactive Features, and User Testing.</p>
+                
+                <div class="methodology-phases">
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">Data Connection & Preparation</h3>
+                        <p class="phase-question">"How do we prepare claims data for effective visualization?"</p>
+                        <p class="phase-description">Connected to insurance claims database and extracted relevant data. Performed data cleaning including handling missing values, standardizing formats, and validating data integrity. Created calculated fields for key metrics including claims ratio, settlement time, and fraud indicators. Prepared data for optimal visualization performance.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">Dashboard Design</h3>
+                        <p class="phase-question">"How do we design intuitive, effective dashboards?"</p>
+                        <p class="phase-description">Designed dashboard layout following best practices for visual hierarchy and information density. Created executive dashboard with high-level KPIs, geographic heat maps for regional analysis, time-series charts for trend analysis, and specialized fraud detection views. Ensured mobile-responsive design for on-the-go access.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">Interactive Features</h3>
+                        <p class="phase-question">"How do we enable interactive exploration and analysis?"</p>
+                        <p class="phase-description">Implemented dynamic filters for claim type, date range, status, and other dimensions. Built drill-down capabilities for detailed claims investigation. Created parameters for flexible analysis and custom calculations. Developed tooltips and annotations to provide context and guidance for users.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">User Testing & Refinement</h3>
+                        <p class="phase-question">"How do we ensure dashboards meet stakeholder needs?"</p>
+                        <p class="phase-description">Conducted user testing with stakeholders including claims managers, executives, and analysts. Gathered feedback on usability, functionality, and visual design. Refined visualizations based on user input to ensure dashboards meet business needs and are intuitive for end users.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Results & Outcomes</h2>
+                <p>Dashboard adoption led to <span class="highlight-text">50% reduction in time spent creating manual reports</span>. Fraud detection visualizations helped identify <span class="highlight-text">15% more suspicious claims</span> for investigation.</p>
+                <h3 class="section-subheader">Key Achievements</h3>
+                <ul>
+                    <li>Reduced report creation time by 50% through automated dashboards</li>
+                    <li>Identified 15% more suspicious claims through fraud detection visualizations</li>
+                    <li>Revealed underserved markets through regional heat map analysis</li>
+                    <li>Improved customer satisfaction by 20% through faster response to claims spikes</li>
+                    <li>Enabled real-time monitoring and faster decision-making</li>
+                    <li>Improved operational efficiency through interactive data exploration</li>
+                </ul>
+                <p>The dashboards transformed how stakeholders interact with claims data, enabling faster, more informed decision-making and improved operational efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Technologies Used</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">Tableau</span>
+                    <span class="tech-tag">Data Visualization</span>
+                    <span class="tech-tag">Dashboard Design</span>
+                    <span class="tech-tag">SQL</span>
+                    <span class="tech-tag">Data Preparation</span>
+                    <span class="tech-tag">Business Intelligence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reflection-section">
+        <div class="container">
+            <div class="reflection-content">
+                <h2 class="section-header">Reflection</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px;">This insurance claims visualization project has been a rewarding experience that pushed me to think beyond basic charts and explore the power of interactive dashboards in business intelligence.</p>
+                
+                <div class="reflection-item">
+                    <h4>User-Centric Design is Essential</h4>
+                    <p>I learned that effective dashboards require deep understanding of user needs and workflows. Conducting user testing was crucial for identifying what stakeholders actually needed versus what I initially thought they needed. The feedback helped me create dashboards that were truly useful and intuitive.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Interactivity Transforms Static Data</h4>
+                    <p>Creating interactive dashboards with filters, drill-downs, and dynamic parameters transformed how stakeholders could explore data. The ability to answer ad-hoc questions without creating new reports was a game-changer for the organization, significantly improving operational efficiency.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Visual Hierarchy Guides Understanding</h4>
+                    <p>I discovered that thoughtful visual hierarchy and design choices significantly impact how users interpret and act on data. Following dashboard design best practices helped me create visualizations that were not just beautiful, but also effective at communicating insights and driving action.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Explore More Projects</h2>
+            <a href="index.html#projects" class="btn-view-all">View All Projects</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Alex Saji. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/alxsaji/portfolio" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/alexsaji" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

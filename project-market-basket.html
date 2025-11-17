@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Market Basket Analysis for Coffee Chain | Consumer Insights Case Study | Alex Saji</title>
+    <meta name="title" content="Market Basket Analysis for Coffee Chain | Consumer Insights Case Study">
+    <meta name="description" content="Market Basket Analysis case study - Analyzed customer purchase patterns using Apriori algorithm to identify product associations and optimize revenue through combo meals and strategic product placement for a coffee chain.">
+    <meta name="keywords" content="Market Basket Analysis, Apriori Algorithm, Consumer Insights, Association Rules, Product Recommendations, Coffee Chain, Retail Analytics, Data Mining, KNIME, Alex Saji">
+    <meta name="author" content="Alex Saji">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alexsaji.vercel.app/project-market-basket.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://alexsaji.vercel.app/project-market-basket.html">
+    <meta property="og:title" content="Market Basket Analysis for Coffee Chain | Consumer Insights Case Study">
+    <meta property="og:description" content="Analyzed customer purchase patterns to identify product associations and optimize revenue through strategic recommendations.">
+    <meta property="og:image" content="https://alexsaji.vercel.app/images/alex-saji.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://alexsaji.vercel.app/project-market-basket.html">
+    <meta name="twitter:title" content="Market Basket Analysis for Coffee Chain | Consumer Insights Case Study">
+    <meta name="twitter:description" content="Analyzed customer purchase patterns to identify product associations and optimize revenue.">
+    <meta name="twitter:image" content="https://alexsaji.vercel.app/images/alex-saji.jpg">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-category="consumer">
+    <!-- Navigation - Floating Island -->
+    <nav class="navbar-island">
+        <div class="nav-island-content">
+            <a href="index.html" class="logo">
+                <img src="images/alex-saji.jpg" alt="Alex Saji - Market Research Analyst & Data Scientist" class="logo-image">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="index.html#contact" class="contact-btn">Contact</a>
+                </div>
+                <button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle">
+                    <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+            <div class="project-header-tags">
+                <span class="tag category-badge" data-category="consumer">Consumer Insights</span>
+                <span class="tag">KNIME</span>
+                <span class="tag">Association Rules</span>
+            </div>
+
+            <h1 class="project-page-title">Market Basket Analysis for Grocery Store</h1>
+            <p class="project-category">Marketing Analytics</p>
+            <p class="project-tagline">A comprehensive analysis of grocery store transactional data to identify the most popular product combos and suggest lucrative combo offers using association rule mining.</p>
+
+            <a href="https://github.com/alxsaji/portfolio" target="_blank" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View Portfolio
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="project-hero-image">
+                <div class="project-icon">
+                    <span class="icon-letter">M</span>
+                    <p class="icon-category">Marketing Analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Metadata -->
+    <section class="project-section">
+        <div class="container">
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <div class="metadata-label">Role</div>
+                    <div class="metadata-value">Data Analyst</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Team</div>
+                    <div class="metadata-value-list">
+                        <span>Retail Manager</span>
+                        <span>Store Operations</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Tools</div>
+                    <div class="metadata-value-list">
+                        <span>KNIME</span>
+                        <span>Association Rules</span>
+                        <span>Apriori Algorithm</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Timeline</div>
+                    <div class="metadata-value">1 month</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Context</h2>
+                <p>A Grocery Store shared their transactional data with the objective of identifying <span class="highlight-text">the most popular combos</span> that can be suggested to the grocery store chain after a thorough analysis of the most commonly occurring sets of items in customer orders. The store didn't have any combo offers and needed data-driven recommendations for the best combos and offers.</p>
+                <p>The challenge was to analyze <span class="highlight-text">transactional data</span> and uncover <span class="highlight-text">product associations</span> using association rule mining techniques to suggest strategic product bundles that could increase sales and customer satisfaction.</p>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Dataset Overview</h3>
+                <p>The dataset contains <span class="highlight-text">20,641 entries</span> and <span class="highlight-text">3 variables</span>:</p>
+                <ul>
+                    <li><strong>Order item:</strong> Product category purchased</li>
+                    <li><strong>Product:</strong> Specific product name</li>
+                    <li><strong>Date:</strong> Transaction date</li>
+                </ul>
+                <p>The dataset includes <span class="highlight-text">2 object variables</span> and <span class="highlight-text">1 continuous variable</span> (Date field). There are <span class="highlight-text">37 unique product categories</span> present in the dataset, with <span class="highlight-text">Poultry</span> being the top product category and <span class="highlight-text">Soda</span> being the second most ordered category.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Problem</h2>
+                <p>A Grocery Store has transactional data but <span class="highlight-text">no existing combo offers</span> and needs to identify <span class="highlight-text">the most popular product combinations</span> that customers purchase together. The store requires data-driven recommendations to create effective combo offers that can increase sales and improve customer experience.</p>
+                <h3 class="section-subheader">Key Challenges</h3>
+                <p class="phase-question">"How can we identify the most commonly occurring sets of items in customer orders to suggest the best combos and offers for the grocery store chain?"</p>
+                <p>The grocery store faced several key challenges:</p>
+                <ul>
+                    <li>No existing combo offers or product bundling strategies</li>
+                    <li>Lack of understanding of which products are frequently purchased together</li>
+                    <li>Need to identify strong product associations from transactional data</li>
+                    <li>Requirement to suggest lucrative combo offers based on data analysis</li>
+                    <li>Opportunity to increase sales of low-performing products through strategic bundling</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Project Goal</h2>
+                <p>Identify <span class="highlight-text">the most popular product combos</span> through thorough analysis of the most commonly occurring sets of items in customer orders, and suggest <span class="highlight-text">the best combos and offers</span> to the grocery store chain that can drive sales and improve customer satisfaction.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Solution</h2>
+                <p class="project-tagline" style="margin-bottom: 24px;">"Market Basket Analysis is a technique used by large retailers to uncover the association between items or to determine the strength of association between pairs of products purchased together."</p>
+                <p>Conducted comprehensive market basket analysis using <span class="highlight-text">KNIME</span> to perform association rule mining on grocery store transactional data. The analysis identified strong product associations using measures of interestingness based on support, confidence, and lift metrics, enabling the store to create strategic combo offers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Core Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Association Rule Mining</h4>
+                        <p>Identified strong rules discovered in transaction data using measures of interestingness based on support, confidence, and lift metrics to find the best combo offers.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Temporal Sales Analysis</h4>
+                        <p>Analyzed daily, weekly, monthly, quarterly, and yearly trends in sales to understand seasonal patterns and customer purchasing behavior.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Product Category Analysis</h4>
+                        <p>Identified top 10 product categories with Poultry being the highest ordered category and Soda being the second most ordered, while Hand-soap and Sandwich loaves were the lowest.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Combo Offer Recommendations</h4>
+                        <p>Suggested strategic product combinations and lucrative offers including BOGO (Buy One Get One) offers and discount combos based on strong association rules.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Approach</h2>
+                <p>The project was developed using a systematic market basket analysis methodology, following best practices in association rule mining and retail analytics. The approach was divided into four key phases: Data Preparation, Association Rule Mining, Rule Evaluation, and Strategy Development.</p>
+                
+                <div class="methodology-phases">
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">Data Collection & Preparation</h3>
+                        <p class="phase-question">"What transactional data do we need, and how do we prepare it for market basket analysis?"</p>
+                        <p class="phase-description">Collected grocery store transactional data containing 20,641 entries with 3 variables: Order item, Product, and Date. Performed data exploration to understand the structure, identified 37 unique product categories, and analyzed the distribution of products. Created a 5-point summary revealing that Poultry is the top product category. Prepared the data in the format required for association rule mining in KNIME.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">Exploratory Data Analysis</h3>
+                        <p class="phase-question">"What patterns can we identify in sales trends and product categories?"</p>
+                        <p class="phase-description">Conducted comprehensive exploratory data analysis including daily, weekly, monthly, quarterly, and yearly trends in sales. Analyzed the top 10 product categories, identifying that Poultry is the highest ordered category and Soda is the second most ordered. Found that Hand-soap and Sandwich loaves are the lowest ordered categories. Analyzed sales patterns across different time periods to understand customer purchasing behavior and seasonal trends.</p>
+                        <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                            <img src="images/market-basket/daily-trends.png" alt="Daily Sales Trends" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <img src="images/market-basket/weekly-trends.png" alt="Weekly Sales Trends" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <img src="images/market-basket/monthly-trends.png" alt="Monthly Sales Trends" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <img src="images/market-basket/quarterly-trends.png" alt="Quarterly Sales Trends" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <img src="images/market-basket/yearly-trends.png" alt="Yearly Sales Trends" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">Market Basket Analysis & Association Rules</h3>
+                        <p class="phase-question">"How do we identify strong product associations using association rule mining?"</p>
+                        <p class="phase-description">Performed market basket analysis using KNIME to uncover associations between items and determine the strength of association between pairs of products purchased together. Applied association rules with threshold values: Support (0.02 - minimum possibility of product being ordered), Maximum Set Length (10 - maximum number of products in a set of order), and Minimum Confidence (0.03 - minimum confidence that suggested product would be present in the basket while other products are picked up). Used measures of interestingness to identify strong rules in transaction data.</p>
+                        <div style="margin-top: 24px;">
+                            <img src="images/market-basket/market-basket-tools.png" alt="Market Basket Analysis Tools" style="width: 100%; max-width: 600px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">Association Identification & Combo Recommendations</h3>
+                        <p class="phase-question">"What are the best product combos and offers we can suggest?"</p>
+                        <p class="phase-description">Identified key product associations and best combos based on association rules. Found that Paper towels, eggs, dinner rolls, ice cream, pasta, and lunch meat can be a perfect combo. Identified other strong associations including Sandwich loaves with yogurt, hand soap, toilet paper, and soap. Developed recommendations for BOGO (Buy One Get One) offers and discount combos. Suggested strategies to increase sales of low-performing products by bundling them with high-performing products like Poultry and Soda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Analysis Results</h2>
+                <p>The market basket analysis successfully analyzed <span class="highlight-text">20,641 transactional entries</span> across <span class="highlight-text">37 unique product categories</span>, identifying strong product associations and recommending strategic combo offers for the grocery store.</p>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Key Findings</h3>
+                <ul>
+                    <li><strong>Product Categories:</strong> Identified 37 unique product categories with Poultry being the top category and Soda being the second most ordered</li>
+                    <li><strong>Sales Trends:</strong> Analyzed daily, weekly, monthly, quarterly, and yearly trends revealing sales patterns and seasonal behaviors</li>
+                    <li><strong>Low-Performing Products:</strong> Hand-soap and Sandwich loaves were identified as the lowest ordered categories</li>
+                    <li><strong>Association Rules:</strong> Applied association rule mining with Support (0.02), Maximum Set Length (10), and Minimum Confidence (0.03) thresholds</li>
+                    <li><strong>Best Combos Identified:</strong> Found strong associations including Paper towels with eggs, dinner rolls, ice cream, pasta, and lunch meat</li>
+                    <li><strong>Lift Values:</strong> Calculated lift values ranging from 2.218 to 2.349 for top product associations</li>
+                </ul>
+                
+                <div style="margin-top: 32px;">
+                    <img src="images/market-basket/top-categories.png" alt="Top 10 Product Categories" style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                </div>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Best Product Combos</h3>
+                <p>Based on association rule mining, the following product combinations were identified as the best combos:</p>
+                <ul>
+                    <li><strong>Paper towels</strong> → [eggs, dinner rolls, ice cream, pasta, lunch meat]</li>
+                    <li><strong>Sandwich loaves</strong> → [yogurt, hand soap, toilet paper, soap]</li>
+                    <li><strong>Mixes</strong> → [yogurt, dishwashing liquid/detergent, all-purpose, hand soap]</li>
+                    <li><strong>Ketchup</strong> → [tortillas, coffee/tea, juice, soap] (83.8% confidence)</li>
+                    <li><strong>Spaghetti sauce</strong> → [waffles, laundry detergent, mixes, soap]</li>
+                </ul>
+                
+                <div style="margin-top: 32px;">
+                    <img src="images/market-basket/associations.png" alt="Product Associations Identified" style="width: 100%; max-width: 800px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                </div>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Business Impact & Recommendations</h3>
+                <p><strong>Strategic Recommendations:</strong></p>
+                <ul>
+                    <li><strong>Poultry Bundling:</strong> Poultry can be clubbed together with almost all food items, especially with dinner rolls and spaghetti rolls, as it's the top product category</li>
+                    <li><strong>Soda Combo Offers:</strong> Since Soda is the second most ordered item, it can be offered in combo deals with other products</li>
+                    <li><strong>Low-Performing Product Strategy:</strong> Since Hand-soap and Sandwich loaves are the least ordered items, combo offers with Poultry and Soda will eventually increase their sales</li>
+                    <li><strong>BOGO Offers:</strong> BOGO (Buy One Get One) can be created for Paper towels since if customers buy [eggs, dinner rolls, ice cream, pasta, lunch meat], Paper towels are also purchased. If customers buy anything from the given category, towels can be offered on a discount</li>
+                    <li><strong>Ketchup Combo:</strong> Ketchup can be offered along with [tortillas, coffee/tea, juice, soap] on a discount offer or in a sachet as a combo offer since this rule has 83.8% confidence</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Visualizations & Analysis</h2>
+                <p>The project included comprehensive visualizations to understand sales trends, product categories, and product associations. Key visualizations created include:</p>
+                
+                <div class="features-grid" style="margin-top: 24px;">
+                    <div class="feature-item">
+                        <h4>Temporal Sales Trends</h4>
+                        <p>Charts showing daily, weekly, monthly, quarterly, and yearly trends in sales, helping identify seasonal patterns, peak sales periods, and customer purchasing behaviors over time.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Top Product Categories</h4>
+                        <p>Visualizations displaying the top 10 product categories, highlighting that Poultry is the highest ordered category, Soda is the second most ordered, while Hand-soap and Sandwich loaves are the lowest.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>KNIME Workflow</h4>
+                        <p>Complete KNIME workflow visualization showing the data processing pipeline, association rule mining process, and analysis steps used to identify product associations.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Association Rules Visualization</h4>
+                        <p>Visual representations of product associations showing support, confidence, and lift values for different product combinations, enabling identification of the strongest associations.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 32px;">
+                    <h3 class="section-subheader">KNIME Workflow</h3>
+                    <img src="images/market-basket/knime-workflow.png" alt="KNIME Workflow for Market Basket Analysis" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                </div>
+                
+                <div style="margin-top: 32px; padding: 24px; background-color: var(--bg-light); border-radius: 8px;">
+                    <p style="margin: 0; font-style: italic; color: var(--text-secondary);">
+                        <strong>Note:</strong> The complete analysis document with all visualizations, KNIME workflow, and detailed association rules is available. The analysis includes temporal sales trends, product category analysis, association rule mining results, and comprehensive combo offer recommendations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Technologies Used</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">KNIME</span>
+                    <span class="tech-tag">Association Rules</span>
+                    <span class="tech-tag">Apriori Algorithm</span>
+                    <span class="tech-tag">Market Basket Analysis</span>
+                    <span class="tech-tag">Support</span>
+                    <span class="tech-tag">Confidence</span>
+                    <span class="tech-tag">Lift</span>
+                    <span class="tech-tag">Retail Analytics</span>
+                    <span class="tech-tag">Product Association</span>
+                    <span class="tech-tag">Time Series Analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reflection-section">
+        <div class="container">
+            <div class="reflection-content">
+                <h2 class="section-header">Reflection</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px;">This market basket analysis project has been a rewarding experience that demonstrated the power of association rule mining in retail optimization and the importance of data-driven decision making for grocery stores.</p>
+                
+                <div class="reflection-item">
+                    <h4>Understanding Support, Confidence, and Lift</h4>
+                    <p>I learned that association rules require careful tuning of threshold values. Support indicates how frequently an item-set appears, confidence shows the percentage of transactions satisfying X that also satisfy Y, and lift measures the increase in sales of A when you sell B. Finding the right balance of these metrics was crucial for identifying actionable product associations.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>KNIME Workflow for Retail Analytics</h4>
+                    <p>Using KNIME for market basket analysis provided a powerful visual workflow that made the association rule mining process transparent and reproducible. The workflow approach helped me understand each step of the analysis and communicate the methodology effectively to stakeholders.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Strategic Combo Offers Drive Sales</h4>
+                    <p>I discovered that identifying product associations is just the beginning - the real value comes from translating these insights into strategic combo offers. By bundling high-performing products like Poultry and Soda with low-performing items like Hand-soap and Sandwich loaves, we can increase overall sales and improve customer value perception.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title">Explore More Projects</h2>
+            <a href="index.html#projects" class="btn-view-all">View All Projects</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Alex Saji. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/alxsaji/portfolio" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/alexsaji" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

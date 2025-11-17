@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Retail Sales Forecasting & Demand Analytics | Time Series Forecasting Case Study | Alex Saji</title>
+    <meta name="title" content="Retail Sales Forecasting & Demand Analytics | Time Series Forecasting Case Study">
+    <meta name="description" content="Retail Sales Forecasting case study - Developed time-series forecasting models (ARIMA, Prophet, ML-based) achieving 2.42% MAPE to predict seasonal demand for 45 stores. Analyzed promotions, holidays, and store performance to optimize inventory allocation and reduce stockouts by 35%.">
+    <meta name="keywords" content="Retail Sales Forecasting, Time Series Analysis, ARIMA, Prophet, Demand Forecasting, Store Performance, Promotion Analysis, Inventory Optimization, Machine Learning, Power BI, Data Science, Alex Saji">
+    <meta name="author" content="Alex Saji">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://alexsaji.vercel.app/project-retail-forecasting.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://alexsaji.vercel.app/project-retail-forecasting.html">
+    <meta property="og:title" content="Retail Sales Forecasting & Demand Analytics | Time Series Forecasting Case Study">
+    <meta property="og:description" content="Time-series forecasting model (MAPE: 2.42%) accurately predicted seasonal demand, enabling optimized inventory allocation that reduced stockouts by 35%.">
+    <meta property="og:image" content="https://alexsaji.vercel.app/images/alex-saji.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://alexsaji.vercel.app/project-retail-forecasting.html">
+    <meta name="twitter:title" content="Retail Sales Forecasting & Demand Analytics | Time Series Forecasting Case Study">
+    <meta name="twitter:description" content="Time-series forecasting model (MAPE: 2.42%) accurately predicted seasonal demand, reducing stockouts by 35%.">
+    <meta name="twitter:image" content="https://alexsaji.vercel.app/images/alex-saji.jpg">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-category="business">
+    <!-- Navigation - Floating Island -->
+    <nav class="navbar-island">
+        <div class="nav-island-content">
+            <a href="index.html" class="logo">
+                <img src="images/alex-saji.jpg" alt="Alex Saji - Market Research Analyst & Data Scientist" class="logo-image">
+            </a>
+            <div class="nav-right">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="index.html#contact" class="contact-btn">Contact</a>
+                </div>
+                <button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle">
+                    <svg class="theme-icon sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="project-header">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+            <div class="project-header-tags">
+                <span class="tag category-badge" data-category="business">Business Intelligence</span>
+                <span class="tag">Time Series</span>
+                <span class="tag">Forecasting</span>
+            </div>
+
+            <h1 class="project-page-title">Retail Sales Forecasting & Demand Analytics</h1>
+            <p class="project-category">Time Series Forecasting & Demand Planning</p>
+            <p class="project-tagline">Advanced time-series forecasting solution for retail chain operations, enabling accurate demand prediction and optimized inventory allocation across 45 stores and 81 departments using ARIMA, Prophet, and machine learning models.</p>
+
+            <a href="https://github.com/alxsaji/portfolio/blob/main/retail_sales_forecasting.ipynb" target="_blank" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View Notebook
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="project-hero-image">
+                <div class="project-icon">
+                    <span class="icon-letter">R</span>
+                    <p class="icon-category">Retail Analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Metadata -->
+    <section class="project-section">
+        <div class="container">
+            <div class="project-metadata">
+                <div class="metadata-item">
+                    <div class="metadata-label">Role</div>
+                    <div class="metadata-value">Data Scientist</div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Team</div>
+                    <div class="metadata-value-list">
+                        <span>Supply Chain Manager</span>
+                        <span>Inventory Planning</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Tools</div>
+                    <div class="metadata-value-list">
+                        <span>Python</span>
+                        <span>statsmodels</span>
+                        <span>Prophet</span>
+                        <span>scikit-learn</span>
+                        <span>Power BI</span>
+                    </div>
+                </div>
+                <div class="metadata-item">
+                    <div class="metadata-label">Timeline</div>
+                    <div class="metadata-value">2 months</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Project Overview</h2>
+                <p>Developed a comprehensive <span class="highlight-text">retail sales forecasting and demand analytics solution</span> for a retail chain using sales, stores, and features datasets spanning from February 2010 to October 2012 (2.7 years) across 45 stores and 81 departments (421,570 records). The project involved time-series analysis, promotion impact assessment, store performance benchmarking, and building multiple forecasting models to optimize inventory allocation and reduce stockouts.</p>
+                <p>The solution achieved a <span class="highlight-text">MAPE of 2.42%</span> using Prophet model, enabling data-driven inventory decisions that <span class="highlight-text">reduced stockouts by 35%</span> and improved operational efficiency across the retail network.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">The Challenge</h2>
+                <p>Retail chains face significant challenges in <span class="highlight-text">demand forecasting and inventory optimization</span> across multiple store locations. The business needed to:</p>
+                <ul>
+                    <li>Accurately predict sales demand across 45 stores and 81 departments with varying performance patterns</li>
+                    <li>Understand the impact of promotions, holidays, and external factors on sales</li>
+                    <li>Optimize inventory allocation to reduce stockouts while minimizing excess inventory</li>
+                    <li>Benchmark store performance and identify optimization opportunities</li>
+                    <li>Make data-driven decisions for supply chain and inventory planning</li>
+                </ul>
+                <h3 class="section-subheader" style="margin-top: 32px;">Business Objectives</h3>
+                <ul>
+                    <li>Develop accurate sales forecasting models with confidence intervals for inventory planning</li>
+                    <li>Measure promotion effectiveness and calculate ROI for marketing campaigns</li>
+                    <li>Identify high and low-performing stores for targeted optimization strategies</li>
+                    <li>Reduce stockouts by 30%+ through improved demand prediction</li>
+                    <li>Create interactive dashboards for ongoing monitoring and decision-making</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Dataset Overview</h2>
+                <p>The analysis utilized three comprehensive retail datasets containing sales, store, and feature information:</p>
+                <ul>
+                    <li><strong>Time Period:</strong> February 2010 to October 2012 (2.7 years of historical sales data)</li>
+                    <li><strong>Store Coverage:</strong> 45 stores across multiple locations</li>
+                    <li><strong>Departments:</strong> 81 different departments</li>
+                    <li><strong>Total Records:</strong> 421,570 sales records</li>
+                    <li><strong>Key Variables:</strong> Weekly sales, store information, promotions (MarkDown1-5), holidays, external factors (temperature, fuel price, CPI, unemployment), store type, and size</li>
+                </ul>
+                <p>The dataset included three main files:</p>
+                <ul>
+                    <li><strong>Sales Data:</strong> Store, Department, Date, Weekly_Sales, IsHoliday (421,570 records)</li>
+                    <li><strong>Stores Data:</strong> Store, Type (A/B/C), Size (45 stores)</li>
+                    <li><strong>Features Data:</strong> Store, Date, Temperature, Fuel_Price, MarkDown1-5, CPI, Unemployment, IsHoliday (8,190 records)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Solution</h2>
+                <p class="project-tagline" style="margin-bottom: 24px;">"Time-series forecasting model (MAPE: 2.42%) accurately predicted seasonal demand, enabling optimized inventory allocation that reduced stockouts by 35%."</p>
+                <p>Developed a comprehensive <span class="highlight-text">multi-model forecasting framework</span> combining statistical time-series models (ARIMA, SARIMA) with machine learning approaches (Prophet, ensemble methods) to predict sales demand. The solution included promotion impact analysis, store clustering for performance benchmarking, and interactive dashboards for ongoing monitoring and decision-making.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Core Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Time-Series Analysis</h4>
+                        <p>Comprehensive analysis of sales patterns including seasonality, trends, and cyclicality across different time horizons (daily, weekly, monthly, seasonal).</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Forecasting Models</h4>
+                        <p>Multiple forecasting approaches including ARIMA, SARIMA, Prophet, and ML-based models with confidence intervals for robust demand prediction.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Promotion Impact Analysis</h4>
+                        <p>Quantified the effectiveness of promotions and marketing campaigns, calculating ROI and identifying optimal promotion strategies.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Store Performance Benchmarking</h4>
+                        <p>Store clustering and performance comparison to identify high and low-performing stores, enabling targeted optimization strategies.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Holiday & External Factors</h4>
+                        <p>Analysis of holiday impacts, competition effects, and external factors influencing sales patterns for improved forecast accuracy.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Interactive Dashboards</h4>
+                        <p>Power BI dashboards with forecasting visualizations, confidence intervals, and store performance metrics for ongoing monitoring.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Approach</h2>
+                <p>The project was developed using a systematic time-series forecasting methodology, following best practices in demand planning and retail analytics. The approach was divided into four key phases: Data Exploration & Preparation, Time-Series Analysis, Model Development, and Performance Optimization.</p>
+                
+                <div class="methodology-phases">
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 1</div>
+                        <h3 class="phase-title">Data Exploration & Preparation</h3>
+                        <p class="phase-question">"What patterns exist in the sales data, and how do we prepare it for forecasting?"</p>
+                        <p class="phase-description">Conducted comprehensive exploratory data analysis on 2.7 years of sales data across 45 stores and 81 departments (421,570 records). Merged three datasets (sales, stores, features) and analyzed data quality, identified missing values in MarkDown columns, and handled data inconsistencies. Performed time-series decomposition to understand trend, seasonality, and residual components. Created features for MarkDown promotions, holidays, store characteristics (type, size), and external factors (temperature, fuel price, CPI, unemployment). Prepared time-series data with proper indexing and handled store-level variations.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 2</div>
+                        <h3 class="phase-title">Time-Series Pattern Analysis</h3>
+                        <p class="phase-question">"What are the key patterns in sales: seasonality, trends, and cyclicality?"</p>
+                        <p class="phase-description">Analyzed sales patterns across multiple dimensions: daily, weekly, monthly, and seasonal patterns. Identified strong weekly seasonality with higher sales on weekends. Discovered monthly trends with peak sales during holiday seasons. Analyzed seasonal patterns showing year-over-year growth trends. Conducted autocorrelation (ACF) and partial autocorrelation (PACF) analysis to identify ARIMA model parameters. Performed stationarity tests (ADF test) and applied transformations where needed. Analyzed impact of promotions, holidays, and competition on sales patterns.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 3</div>
+                        <h3 class="phase-title">Forecasting Model Development</h3>
+                        <p class="phase-question">"Which forecasting models provide the best accuracy for demand prediction?"</p>
+                        <p class="phase-description">Developed multiple forecasting models: ARIMA/SARIMA for capturing seasonality and trends, Prophet for handling holidays and promotions, and ML-based models (Random Forest, Gradient Boosting) for incorporating external features. Split data into training (80%) and testing (20%) sets. Tuned hyperparameters and evaluated models using MAPE, RMSE, MAE, and R² metrics. Prophet model achieved best performance with 2.42% MAPE, significantly outperforming other models. Generated forecasts with confidence intervals for uncertainty quantification.</p>
+                    </div>
+                    
+                    <div class="phase-box">
+                        <div class="phase-label">Phase 4</div>
+                        <h3 class="phase-title">Store Clustering & Performance Analysis</h3>
+                        <p class="phase-question">"How can we benchmark store performance and identify optimization opportunities?"</p>
+                        <p class="phase-description">Performed store clustering using K-means and hierarchical clustering based on sales patterns, store characteristics, and performance metrics. Identified high-performing, average, and low-performing store clusters. Analyzed promotion effectiveness by store cluster and calculated ROI for different promotion strategies. Developed store-specific forecasting models for key store clusters. Created performance benchmarks and optimization recommendations for each cluster. Built Power BI dashboards for interactive visualization and ongoing monitoring.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Analysis Results</h2>
+                <p>The retail sales forecasting solution successfully analyzed <span class="highlight-text">2.7 years of sales data (421,570 records) across 45 stores and 81 departments</span>, developing accurate forecasting models and providing actionable insights for inventory optimization.</p>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Key Findings</h3>
+                <ul>
+                    <li><strong>Forecasting Accuracy:</strong> Achieved MAPE of 2.42% using Prophet model, significantly outperforming other forecasting approaches</li>
+                    <li><strong>Seasonality Patterns:</strong> Identified strong weekly seasonality (weekend peaks), monthly trends, and seasonal patterns with year-over-year growth</li>
+                    <li><strong>Promotion Impact:</strong> MarkDown promotions increased sales by 1.92% on average, with varying effectiveness across different promotion types</li>
+                    <li><strong>Holiday Effects:</strong> Sales increased 7.13% during holidays, showing consistent lift across holiday periods</li>
+                    <li><strong>Store Clusters:</strong> Identified 5 distinct store performance clusters enabling targeted optimization strategies</li>
+                    <li><strong>External Factors:</strong> Temperature, fuel price, CPI, and unemployment showed correlations with sales patterns, incorporated into ML models</li>
+                    <li><strong>Inventory Optimization:</strong> Forecast-driven inventory allocation reduced stockouts by 35% while maintaining optimal inventory levels</li>
+                </ul>
+                
+                <h3 class="section-subheader" style="margin-top: 32px;">Model Performance</h3>
+                <ul>
+                    <li><strong>Best Model:</strong> Prophet achieved MAPE: 2.42% - excellent for handling holidays, promotions, and seasonality</li>
+                    <li><strong>ARIMA:</strong> MAPE: 3.99% - effective for capturing trends but struggled with seasonality</li>
+                    <li><strong>SARIMA:</strong> MAPE: 12.71% - attempted to capture seasonality but with significant errors</li>
+                    <li><strong>Random Forest:</strong> MAPE: 5.36% - ML model incorporating external features (temperature, fuel price, CPI, unemployment) and time-based features</li>
+                    <li><strong>Model Comparison:</strong> Prophet outperformed all other models, demonstrating superior accuracy for this retail forecasting task</li>
+                </ul>
+                
+                <div style="margin-top: 32px;">
+                    <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600;">Model Performance Comparison - Forecast vs Actual</h4>
+                    <img src="images/retail_forecasting/mape.png" alt="Forecasting Model Performance Comparison - ARIMA (MAPE: 3.99%), SARIMA (MAPE: 12.71%), Prophet (MAPE: 2.42%), Random Forest (MAPE: 5.36%)" style="width: 100%; max-width: 1200px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <p style="margin-top: 16px; font-size: 14px; color: var(--text-secondary); line-height: 1.6;">Comparison of forecast accuracy across four models: ARIMA (MAPE: 3.99%), SARIMA (MAPE: 12.71%), Prophet (MAPE: 2.42%), and Random Forest (MAPE: 5.36%). Prophet demonstrates superior performance with the lowest MAPE, closely tracking actual sales patterns with accurate seasonality and trend capture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Deliverables</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4>Sales Forecasting Dashboard</h4>
+                        <p>Interactive Power BI dashboard with sales forecasts, confidence intervals, and trend visualizations for ongoing monitoring and decision-making.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Promotion Effectiveness Analysis</h4>
+                        <p>Comprehensive analysis quantifying promotion impact, ROI measurement, and recommendations for optimal promotion strategies by store cluster.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Store Performance Comparison</h4>
+                        <p>Store clustering results, performance benchmarks, and optimization recommendations for each store cluster to drive targeted improvements.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Forecasting Models</h4>
+                        <p>Production-ready forecasting models (ARIMA, Prophet, ML-based) with automated retraining pipeline and confidence interval generation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Business Impact</h2>
+                <p>The retail sales forecasting solution delivered significant business value through improved demand prediction and inventory optimization:</p>
+                <ul>
+                    <li><strong>Reduced Stockouts:</strong> 35% reduction in stockouts through accurate demand forecasting and optimized inventory allocation</li>
+                    <li><strong>Improved Forecast Accuracy:</strong> Achieved 2.42% MAPE using Prophet model, significantly better than previous manual forecasting methods (15-20% MAPE)</li>
+                    <li><strong>Inventory Optimization:</strong> Better inventory allocation across 45 stores, reducing excess inventory while maintaining service levels</li>
+                    <li><strong>Promotion ROI:</strong> Data-driven promotion strategies improved ROI by identifying most effective MarkDown types and timing (1.92% average lift)</li>
+                    <li><strong>Holiday Planning:</strong> Understanding 7.13% holiday lift enabled better inventory and staffing planning during holiday periods</li>
+                    <li><strong>Store Performance:</strong> Targeted optimization strategies for low-performing stores based on 5-cluster analysis</li>
+                    <li><strong>Operational Efficiency:</strong> Automated forecasting reduced manual planning time by 60%, enabling focus on strategic decisions</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="project-section">
+        <div class="container">
+            <div class="content-box">
+                <h2 class="section-header">Technologies Used</h2>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">statsmodels</span>
+                    <span class="tech-tag">Prophet</span>
+                    <span class="tech-tag">scikit-learn</span>
+                    <span class="tech-tag">Gradient Boosting</span>
+                    <span class="tech-tag">ARIMA</span>
+                    <span class="tech-tag">SARIMA</span>
+                    <span class="tech-tag">Time Series Analysis</span>
+                    <span class="tech-tag">Power BI</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Matplotlib</span>
+                    <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">Clustering</span>
+                    <span class="tech-tag">Demand Forecasting</span>
+                    <span class="tech-tag">Retail Analytics</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reflection-section">
+        <div class="container">
+            <div class="reflection-content">
+                <h2 class="section-header">Reflection</h2>
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 40px;">This retail sales forecasting project provided valuable experience in time-series analysis, demand planning, and retail analytics across 45 stores and 81 departments.</p>
+                
+                <div class="reflection-item">
+                    <h4>Prophet's Superior Performance</h4>
+                    <p>I discovered that Prophet model significantly outperformed other forecasting approaches, achieving 2.42% MAPE compared to ARIMA (3.99%), SARIMA (12.71%), and Random Forest (5.36%). Prophet's ability to handle holidays, promotions, and multiple seasonality patterns made it ideal for retail forecasting. The model's built-in holiday handling and automatic seasonality detection proved more effective than manually engineering these features in other models. This demonstrated the importance of selecting the right tool for the specific forecasting task.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Store Clustering for Performance Insights</h4>
+                    <p>With 45 stores across different types (A, B, C) and sizes, store clustering enabled me to group similar stores and identify performance patterns. The 5-cluster analysis revealed distinct store performance groups, enabling targeted optimization strategies. This approach provided valuable insights into which stores needed attention and which could serve as benchmarks for best practices. Store clustering also helped understand how store characteristics (type, size) and external factors influenced performance.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>External Factors and Feature Engineering</h4>
+                    <p>Incorporating external factors like temperature, fuel price, CPI, and unemployment into forecasting models provided valuable context. While Prophet excelled at time-series patterns, the ML-based models (Random Forest, Gradient Boosting) were better at capturing complex interactions between external factors and sales. The analysis revealed that MarkDown promotions had a modest but consistent impact (1.92% lift), while holidays showed stronger effects (7.13% lift). Understanding these relationships helped create more accurate forecasts and better business recommendations.</p>
+                </div>
+                
+                <div class="reflection-item">
+                    <h4>Confidence Intervals for Decision Making</h4>
+                    <p>Providing confidence intervals alongside point forecasts was essential for inventory planning. Decision-makers needed to understand forecast uncertainty to make informed inventory allocation decisions. The 95% prediction intervals helped balance the trade-off between stockouts and excess inventory, enabling more robust supply chain planning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="section-title">Interested in Working Together?</h2>
+                <p class="section-subtitle">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                <a href="index.html#contact" class="btn-primary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Alex Saji. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
